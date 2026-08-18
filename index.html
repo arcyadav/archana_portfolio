@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archana Yadav - ML & AI Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #2a1a4a 0%, #1a0f2e 50%, #0a0a1a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        nav {
+            background: rgba(20, 10, 40, 0.92);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #ffd700;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-bottom: 3px solid #ffd700;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .hero {
+            text-align: center;
+            padding-top: 3rem;
+        }
+
+        .hero-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 8px;
+            margin-bottom: 2.5rem;
+            object-fit: cover;
+            border: 4px solid #ffd700;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.15rem;
+            color: #ffd700;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #ffd700;
+        }
+
+        .cta-buttons {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-family: 'Lora', serif;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: #ffd700;
+            color: #1a0f2e;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(255, 215, 0, 0.45);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(255, 215, 0, 0.35);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #1a1a1a;
+            background: #ffffff;
+            padding: 2.5rem;
+            border-left: 5px solid #ffd700;
+            border-radius: 15px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: #ffffff;
+            padding: 2rem;
+            border: 2px solid rgba(139, 105, 20, 0.4);
+            border-left: 5px solid #ffd700;
+            transition: all 0.3s;
+            border-radius: 15px;
+        }
+
+        .skill-category:hover {
+            background: #ffffff;
+            border-color: #ffd700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .skill-category h3 {
+            color: #1a1a1a;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: rgba(255, 215, 0, 0.15);
+            padding: 0.6rem 1.2rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            color: #1a1a1a;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .skill-tag:hover {
+            background: #ffd700;
+            color: #1a0f2e;
+            border-color: #ffd700;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: #ffffff;
+            padding: 2.5rem;
+            border: 2px solid rgba(139, 105, 20, 0.3);
+            border-left: 6px solid #ffd700;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+
+        .project-card:hover {
+            background: #ffffff;
+            border-color: #ffd700;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+        }
+
+        .project-card .project-type {
+            color: #1a1a1a;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .project-card p {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            padding: 0.5rem 1rem;
+            color: #1a1a1a;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .tech-badge:hover {
+            background: #ffd700;
+            color: #1a0f2e;
+            border-color: #ffd700;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .project-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .project-links a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+
+        .experience-item {
+            background: #ffffff;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border: 2px solid rgba(139, 105, 20, 0.3);
+            border-left: 6px solid #ffd700;
+            border-radius: 15px;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-header h3 {
+            color: #1a1a1a;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .experience-dates {
+            color: #1a1a1a;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .experience-item li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .education-item {
+            background: #ffffff;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border: 2px solid rgba(139, 105, 20, 0.3);
+            border-left: 6px solid #ffd700;
+            border-radius: 15px;
+        }
+
+        .education-item h3 {
+            color: #1a1a1a;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .education-item .degree {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .education-item .meta {
+            color: #1a1a1a;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .education-item .coursework {
+            margin-top: 1rem;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #ffffff;
+            padding: 1.8rem;
+            border: 2px solid rgba(139, 105, 20, 0.3);
+            border-top: 4px solid #ffd700;
+            transition: all 0.3s;
+            border-radius: 15px;
+        }
+
+        .contact-item:hover {
+            border-color: #ffd700;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .contact-item a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+
+        .contact-label {
+            color: #1a1a1a;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2a1a4a 0%, #1a0f2e 100%);
+            text-align: center;
+            padding: 2.5rem;
+            color: #b0b0b0;
+            border-top: 3px solid #ffd700;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            letter-spacing: 0.5px;
+        }
+
+        .design-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #ffd700;
+            color: #1a0f2e;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.35);
+            transition: all 0.3s;
+            z-index: 50;
+            letter-spacing: 0.5px;
+            border: 2px solid #ffd700;
+        }
+
+        .design-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(255, 215, 0, 0.45);
+            background: #ffed4e;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            nav ul {
+                gap: 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .design-toggle {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.75rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#hero">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#experience">EXPERIENCE</a></li>
+            <li><a href="#education">EDUCATION</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero" class="hero">
+        <img src="my_image.jpeg" alt="Archana Yadav" class="hero-image">
+        <h1>Archana Yadav</h1>
+        <p class="tagline">Math & Computing @ IISc | ML Research • Speech AI • Software Engineering</p>
+        <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="#projects" class="btn btn-secondary">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <p class="about-text">
+            I'm a student driven by curiosity — always fascinated by engineering problems. I've explored AI in healthcare, NLP, and machine learning so far, and I'm always looking for the next interesting area to dig into. At the core, I love breaking down problems and thinking through how AI, software, and algorithms can solve them. Still exploring, eager to build.
+        </p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills & Tech Stack</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Python</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Machine Learning</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Classification</span>
+                    <span class="skill-tag">Feature Engineering</span>
+                    <span class="skill-tag">Model Evaluation</span>
+                    <span class="skill-tag">Cross-Validation</span>
+                    <span class="skill-tag">PCA</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Deep Learning</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Neural Networks</span>
+                    <span class="skill-tag">Generative Models</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Natural Language Processing</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Text Classification</span>
+                    <span class="skill-tag">Conversational AI</span>
+                    <span class="skill-tag">LangChain</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Libraries & Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">Matplotlib</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Jupyter</span>
+                    <span class="skill-tag">Linux</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <h3>PyTorch Reimplementation of GLOW</h3>
+                <p class="project-type">Course Project</p>
+                <p>Reimplemented the GLOW normalizing-flow architecture from the original research paper in PyTorch, replacing the legacy TensorFlow 1.x implementation. Implemented ActNorm, Invertible 1×1 Convolutions, and Affine Coupling Layers from scratch.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">PyTorch</span>
+                    <span class="tech-badge">Deep Learning</span>
+                    <span class="tech-badge">Generative Models</span>
+                </div>
+                <p><strong>Results:</strong> Achieved stable training with BPD improving from -4.51 to -6.09 over 10 epochs on MNIST.</p>
+                <div class="project-links">
+                    <a href="https://github.com/arcyadav/glow2" target="_blank">GitHub Repo →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>TTS Evaluation – Validation of IndicMOS</h3>
+                <p class="project-type">Research Project</p>
+                <p>Built an end-to-end evaluation pipeline for multilingual TTS using IndicMOS to automate MOS (Mean Opinion Score) prediction. Validated automatic predictions against ratings from 40 human evaluators using correlation and statistical analysis.</p>
+                <div class="project-tech">
+                    <span class="tech-badge">Speech Synthesis</span>
+                    <span class="tech-badge">Evaluation Metrics</span>
+                    <span class="tech-badge">Multilingual</span>
+                </div>
+                <p><strong>Outcome:</strong> Surveyed and benchmarked recent objective evaluation metrics for Indian-language speech synthesis.</p>
+                <div class="project-links">
+                    <a href="https://github.com/arcyadav/IndicMOS-evaluation" target="_blank">GitHub Repo →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>TANUH Engineering</h3>
+                    <p style="color: #333;">Intern</p>
+                </div>
+                <span class="experience-dates">June 2026 – July 2026 (2 months)</span>
+            </div>
+            <ul>
+                <li>Developed machine learning pipelines for conversational mental health screening using ASR, speaker diarization, speech embeddings, and structured metadata</li>
+                <li>Built and evaluated classification models in Python using scikit-learn, applying feature engineering, PCA, cross-validation, and ROC-AUC/F1 evaluation</li>
+                <li>Designed prompt-engineering workflows and hierarchical annotation taxonomies for LLM-based conversational systems</li>
+                <li>Performed large-scale experimentation across prompt versions, model variants, and inference settings; evaluated annotation quality using inter-rater agreement metrics (e.g., Fleiss' κ)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-item">
+            <h3>Indian Institute of Science (IISc), Bengaluru</h3>
+            <p class="degree">B.Tech in Mathematics and Computing</p>
+            <p class="meta">CGPA: 8.3</p>
+            <p class="coursework">
+                <strong>Relevant Coursework:</strong> Analysis and Linear Algebra, Discrete Mathematics, Probability and Statistics, Data Structures and Algorithms, Numerical Methods, Introduction to AI and Machine Learning, Automata and Computability, Algebraic Structures, Computer Systems
+            </p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Contact</h2>
+        <p style="color: #ffffff; margin-bottom: 1.5rem;">I'm always interested in discussing AI, ML research, and engineering challenges. Feel free to reach out!</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span class="contact-label">Email</span>
+                <a href="mailto:archanay@iisc.ac.in">archanay@iisc.ac.in</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Phone</span>
+                <a href="tel:+919004634658">+91 9004634658</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">GitHub</span>
+                <a href="https://github.com/arcyadav" target="_blank">github.com/arcyadav</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Location</span>
+                <p style="margin-top: 0.5rem; color: #1a1a1a;">Bengaluru, Karnataka, India</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Archana Yadav. All rights reserved.</p>
+    </footer>
+
+    <a href="design-showcase.html" class="design-toggle">← See All Designs</a>
+</body>
+</html>
